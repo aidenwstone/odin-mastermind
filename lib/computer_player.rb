@@ -8,4 +8,8 @@ class ComputerPlayer < Player
   def prompt_for_name
     POSSIBLE_NAMES.sample
   end
+
+  def create_secret_code
+    AVAILABLE_COLORS.sample(4)
+  end
 end
