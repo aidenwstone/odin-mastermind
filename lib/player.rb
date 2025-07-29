@@ -4,6 +4,8 @@
 # It serves as a parent class for both human and computer players.
 # It provides abstract methods that all child classes should implement.
 class Player
+  AVAILABLE_COLORS = %i[black red green yellow blue magenta cyan white].freeze
+
   attr_reader :name
 
   def initialize(game)
