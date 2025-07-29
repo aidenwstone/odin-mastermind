@@ -10,4 +10,14 @@ class Game
     @secret_code = @code_creator.create_secret_code
     @current_turn = 0
   end
+
+  private
+
+  def draw_board
+    @board.reverse_each do |row|
+      print '|'
+      row.each { |color| print " #{color.to_s[0].colorize(color)} " }
+      puts '|'
+    end
+  end
 end
