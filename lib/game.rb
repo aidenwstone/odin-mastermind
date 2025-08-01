@@ -4,6 +4,7 @@ require 'colorize'
 
 class Game
   def initialize(code_creator_class, code_guesser_class)
+    @winner = nil
     @code_creator = code_creator_class.new(self)
     @code_guesser = code_guesser_class.new(self)
     @board = Array.new(10) { Array.new(4, '-') }
