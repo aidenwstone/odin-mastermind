@@ -13,6 +13,10 @@ class Player
     @name = prompt_for_name
   end
 
+  def to_s
+    @name
+  end
+
   def prompt_for_name
     raise NotImplementedError, "#{self.class} must implement the 'prompt_for_name' method."
   end
