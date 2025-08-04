@@ -21,4 +21,12 @@ class Game
       puts '|'
     end
   end
+
+  def evaluate_guess(guess)
+    correct_locations = guess.zip(@secret_code).filter_map do |guess_color, secret_color|
+      guess_color if guess_color == secret_color
+    end
+    correct_colors = guess.intersection(@secret_code - correct_locations)
+    { correct_location: correct_locations.length, correct_color: correct_colors.length }
+  end
 end
