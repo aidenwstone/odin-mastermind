@@ -16,10 +16,10 @@ class Game
   private
 
   def draw_board
-    @board.reverse_each do |row|
+    @board.zip(@feedback).reverse_each do |row, feedback|
       print '|'
       row.each { |color| print " #{color.to_s[0].colorize(color)} " }
-      puts '|'
+      puts "|#{feedback[:correct_location].to_s.colorize(:red)}|#{feedback[:correct_color]}|"
     end
   end
 
