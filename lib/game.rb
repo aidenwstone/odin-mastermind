@@ -29,6 +29,11 @@ class Game
     @winner || @current_turn == MAX_TURNS
   end
 
+  def announce_result
+    puts "\nThe winner is #{@winner}!"
+    puts "The secret code was:#{@secret_code.map { |color| " #{color.to_s.colorize(color)}" }.join}"
+  end
+
   def evaluate_guess(guess)
     correct_locations = guess.zip(@secret_code).filter_map do |guess_color, secret_color|
       guess_color if guess_color == secret_color
