@@ -15,6 +15,24 @@ class Game
     @current_turn = 0
   end
 
+  def play # rubocop:disable Metrics/MethodLength
+    draw_board
+
+    until game_over?
+      @current_turn += 1
+      guess = @code_guesser.guess_secret_code
+      @winner = @code_guesser if guess == @secret_code
+
+      @board[@current_turn - 1] = guess
+      @feedback[@current_turn - 1] = evaluate_guess(guess)
+
+      draw_board
+    end
+
+    @winner = @code_creator if @winner.nil?
+    announce_result
+  end
+
   private
 
   def draw_board
