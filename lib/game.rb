@@ -25,6 +25,10 @@ class Game
     end
   end
 
+  def game_over?
+    @winner || @current_turn == MAX_TURNS
+  end
+
   def evaluate_guess(guess)
     correct_locations = guess.zip(@secret_code).filter_map do |guess_color, secret_color|
       guess_color if guess_color == secret_color
