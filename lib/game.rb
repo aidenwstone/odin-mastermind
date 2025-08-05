@@ -3,12 +3,14 @@
 require 'colorize'
 
 class Game
+  MAX_TURNS = 10
+
   def initialize(code_creator_class, code_guesser_class)
     @winner = nil
     @code_creator = code_creator_class.new(self)
     @code_guesser = code_guesser_class.new(self)
-    @board = Array.new(10) { Array.new(4, '-') }
-    @feedback = Array.new(10) { { correct_location: ' ', correct_color: ' ' } }
+    @board = Array.new(MAX_TURNS) { Array.new(4, '-') }
+    @feedback = Array.new(MAX_TURNS) { { correct_location: ' ', correct_color: ' ' } }
     @secret_code = @code_creator.create_secret_code
     @current_turn = 0
   end
