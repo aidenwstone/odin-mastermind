@@ -22,4 +22,8 @@ class HumanPlayer < Player
   def display_available_colors
     puts AVAILABLE_COLORS.map { |color| color.to_s.colorize(color) }.join(' | ')
   end
+
+  def valid_code?(code)
+    code.all? { |color| AVAILABLE_COLORS.include?(color) } && code.length == 4
+  end
 end
