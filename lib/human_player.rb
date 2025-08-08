@@ -4,11 +4,14 @@ require_relative 'player'
 
 class HumanPlayer < Player
   def guess_secret_code
+    puts "\n#{@name}, guess the secret code, using the available colors (e.g. red green yellow blue):"
+    display_available_colors
+
     loop do
-      puts "\n#{@name}, guess the secret code, using the available colors (e.g. red green yellow blue):"
-      display_available_colors
       guess = gets.chomp.downcase.split.map(&:to_sym)
-      return guess if guess.all? { |color| AVAILABLE_COLORS.include?(color) } && guess.length == 4
+      return guess if valid_code?(guess)
+
+      puts "\nInvalid guess, try again:"
     end
   end
 
