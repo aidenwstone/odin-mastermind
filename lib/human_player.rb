@@ -12,6 +12,18 @@ class HumanPlayer < Player
     end
   end
 
+  def create_secret_code
+    puts "\n#{@name}, create a secret code, using the available colors, with no duplicates (e.g. red green yellow blue):" # rubocop:disable Layout/LineLength
+    display_available_colors
+
+    loop do
+      code = gets.chomp.downcase.split.uniq.map(&:to_sym)
+      return code if valid_code?(code)
+
+      puts "\nInvalid code, try again:"
+    end
+  end
+
   private
 
   def prompt_for_name
