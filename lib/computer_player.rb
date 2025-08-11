@@ -6,7 +6,7 @@ class ComputerPlayer < Player
   POSSIBLE_NAMES = ['Moyer the Destroyer', 'Bad Chad', 'Baron von Cavitus', 'Dr. McFisto', 'Mr. Nemesis'].freeze
 
   def create_secret_code
-    AVAILABLE_COLORS.sample(4)
+    @game.available_colors.sample(4)
   end
 
   private

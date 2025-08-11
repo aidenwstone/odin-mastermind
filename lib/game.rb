@@ -42,6 +42,10 @@ class Game
     code.all? { |color| AVAILABLE_COLORS.include?(color) } && code.length == 4
   end
 
+  def available_colors
+    AVAILABLE_COLORS
+  end
+
   private
 
   def draw_board
