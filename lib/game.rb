@@ -3,6 +3,7 @@
 require 'colorize'
 
 class Game
+  AVAILABLE_COLORS = %i[black red green yellow blue magenta cyan white].freeze
   MAX_TURNS = 10
 
   def initialize(code_creator_class, code_guesser_class)
@@ -31,6 +32,14 @@ class Game
 
     @winner = @code_creator if @winner.nil?
     announce_result
+  end
+
+  def display_available_colors
+    puts AVAILABLE_COLORS.map { |color| color.to_s.colorize(color) }.join(' | ')
+  end
+
+  def valid_code?(code)
+    code.all? { |color| AVAILABLE_COLORS.include?(color) } && code.length == 4
   end
 
   private
