@@ -5,6 +5,11 @@ require_relative 'player'
 class ComputerPlayer < Player
   POSSIBLE_NAMES = ['Moyer the Destroyer', 'Bad Chad', 'Baron von Cavitus', 'Dr. McFisto', 'Mr. Nemesis'].freeze
 
+  def initialize(game)
+    super
+    @possible_codes = @game.available_colors.permutation(4).to_a
+  end
+
   def create_secret_code
     @game.available_colors.sample(4)
   end
