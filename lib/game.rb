@@ -6,6 +6,8 @@ class Game
   AVAILABLE_COLORS = %i[black red green yellow blue magenta cyan white].freeze
   MAX_TURNS = 10
 
+  attr_reader :current_turn, :feedback, :board
+
   def initialize(code_creator_class, code_guesser_class)
     @winner = nil
     @code_creator = code_creator_class.new(self)
