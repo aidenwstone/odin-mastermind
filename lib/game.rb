@@ -27,13 +27,21 @@ class Game
       @winner = @code_guesser if guess == @secret_code
 
       @board[@current_turn - 1] = guess
-      @feedback[@current_turn - 1] = evaluate_guess(guess)
+      @feedback[@current_turn - 1] = evaluate_guess(guess, @secret_code)
 
       draw_board
     end
 
     @winner = @code_creator if @winner.nil?
     announce_result
+  end
+
+  def evaluate_guess(guess, code)
+    correct_locations = guess.zip(code).filter_map do |guess_color, secret_color|
+      guess_color if guess_color == secret_color
+    end
+    correct_colors = guess.intersection(code - correct_locations)
+    { correct_location: correct_locations.length, correct_color: correct_colors.length }
   end
 
   def display_available_colors
@@ -65,13 +73,5 @@ class Game
   def announce_result
     puts "\nThe winner is #{@winner}!"
     puts "The secret code was:#{@secret_code.map { |color| " #{color.to_s.colorize(color)}" }.join}"
-  end
-
-  def evaluate_guess(guess)
-    correct_locations = guess.zip(@secret_code).filter_map do |guess_color, secret_color|
-      guess_color if guess_color == secret_color
-    end
-    correct_colors = guess.intersection(@secret_code - correct_locations)
-    { correct_location: correct_locations.length, correct_color: correct_colors.length }
   end
 end
