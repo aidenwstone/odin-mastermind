@@ -30,6 +30,7 @@ class Game
       @feedback[@current_turn - 1] = evaluate_guess(guess, @secret_code)
 
       draw_board
+      sleep(1) if @code_guesser.instance_of?(ComputerPlayer)
     end
 
     @winner = @code_creator if @winner.nil?
