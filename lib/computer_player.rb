@@ -19,4 +19,10 @@ class ComputerPlayer < Player
   def prompt_for_name
     POSSIBLE_NAMES.sample
   end
+
+  def filter_possible_codes
+    previous_guess = @game.board[@game.current_turn - 2]
+    previous_feedback = @game.feedback[@game.current_turn - 2]
+    @possible_codes.filter { |code| @game.evaluate_guess(previous_guess, code) == previous_feedback }
+  end
 end
