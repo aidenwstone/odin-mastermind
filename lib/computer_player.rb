@@ -10,6 +10,13 @@ class ComputerPlayer < Player
     @possible_codes = @game.available_colors.permutation(4).to_a
   end
 
+  def guess_secret_code
+    @possible_codes = filter_possible_codes if @game.current_turn > 1
+    guess = @possible_codes.sample
+    puts "\n#{@name} guessed:#{guess.map { |color| " #{color.to_s.colorize(color)}" }.join}"
+    guess
+  end
+
   def create_secret_code
     @game.available_colors.sample(4)
   end
