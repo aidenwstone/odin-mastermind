@@ -2,6 +2,9 @@
 
 require_relative 'player'
 
+# The ComputerPlayer class manages an automated computer player.
+# It implements the abstract methods from the Player class, randomly creating a secret code
+# and using a filtering algorithm to guess the code, depending on the role of the player.
 class ComputerPlayer < Player
   POSSIBLE_NAMES = ['Moyer the Destroyer', 'Bad Chad', 'Baron von Cavitus', 'Dr. McFisto', 'Mr. Nemesis'].freeze
 

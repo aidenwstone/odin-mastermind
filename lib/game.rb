@@ -2,6 +2,8 @@
 
 require 'colorize'
 
+# The Game class manages a game of Mastermind.
+# It provides functionality to run the game loop, evaluate guesses, display the board and feedback, etc.
 class Game
   AVAILABLE_COLORS = %i[black red green yellow blue magenta cyan white].freeze
   MAX_TURNS = 10

@@ -2,6 +2,9 @@
 
 require_relative 'player'
 
+# The HumanPlayer class manages a human player, using terminal input.
+# It implements the abstract methods from the Player class, prompting the user for input
+# to create a secret code and to guess the secret, depending on the role of the player.
 class HumanPlayer < Player
   def guess_secret_code
     puts "\n#{@name}, guess the secret code, using the available colors (e.g. red green yellow blue):"
